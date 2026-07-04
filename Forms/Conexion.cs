@@ -29,7 +29,7 @@ namespace Punto.Forms
                 MessageBox.Show("Conexion Exitosa...");
                 return con;
             }
-            catch(Exception ex)
+            catch(MySqlException ex)
             {
                 MessageBox.Show("error al conectarse con la base de datos \n"+ ex.Message);
                 return null;
