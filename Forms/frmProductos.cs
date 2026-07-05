@@ -13,6 +13,7 @@ namespace Punto.Forms
             InitializeComponent();
         }
 
+        //Para logar la carga de los productos en el datagridview
         private void frmProductos_Load(object sender, System.EventArgs e)
         {
             CargarProductos();
@@ -50,6 +51,7 @@ namespace Punto.Forms
             }
         }
 
+        //Para agregar productos.
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             Conexion conClase = new Conexion();
@@ -94,6 +96,7 @@ namespace Punto.Forms
             }
         }
 
+        //Para seleccionar un producto del datagridview y mostrarlo en los textbox
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         { 
             if (e.RowIndex >= 0)
@@ -108,6 +111,50 @@ namespace Punto.Forms
                 IdProducSelecc = Convert.ToInt32(fila.Cells["producto_id"].Value);
             }
         }
-    
+
+        //Para editar un producto seleccionado
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            // Si no se ha seleccionado ningún producto, no hace nada y muestra un mensaje de advertencia
+            if (IdProducSelecc == 0)
+            {
+                MessageBox.Show("Por favor, selecciona primero un producto de la tabla para modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Conexion conClase = new Conexion();
+            MySqlConnection conn = conClase.GetConeccion();
+            if (conn == null) return;
+
+            try
+            {
+                string sql = "UPDATE productos SET codigo = @codigo, descripcion = @descripcion, precio = @precio, stock = @stock WHERE producto_id = @id";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@codigo", txtCodigo.Text.Trim());
+                cmd.Parameters.AddWithValue("@descripcion", txtNombre.Text.Trim());
+                cmd.Parameters.AddWithValue("@precio", Convert.ToDecimal(txtPrecio.Text));
+                cmd.Parameters.AddWithValue("@stock", Convert.ToInt32(txtStock.Text));
+                cmd.Parameters.AddWithValue("@id", IdProducSelecc);
+                int filas = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                if (filas > 0)
+                {
+                    MessageBox.Show("Producto modificado con éxito.", "Editar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarProductos();
+
+                    txtCodigo.Clear();
+                    txtNombre.Clear();
+                    txtPrecio.Clear();
+                    txtStock.Clear();
+                    IdProducSelecc = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al modificar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (conn.State == System.Data.ConnectionState.Open) conn.Close();
+            }
+        }
     }
 }
