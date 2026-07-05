@@ -6,12 +6,10 @@ namespace Punto.Forms
 
         private System.Windows.Forms.TextBox txtBusqueda;
         private System.Windows.Forms.DataGridView dgvProductos;
-        private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtStock;
-        private System.Windows.Forms.ComboBox cmbCategorias;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnEliminar;
@@ -19,7 +17,6 @@ namespace Punto.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox gbBusqueda;
         private System.Windows.Forms.GroupBox gbDatos;
@@ -36,12 +33,10 @@ namespace Punto.Forms
         {
             this.txtBusqueda = new System.Windows.Forms.TextBox();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.lblId = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
-            this.cmbCategorias = new System.Windows.Forms.ComboBox();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -49,7 +44,6 @@ namespace Punto.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.gbBusqueda = new System.Windows.Forms.GroupBox();
             this.gbDatos = new System.Windows.Forms.GroupBox();
@@ -82,50 +76,33 @@ namespace Punto.Forms
             this.dgvProductos.Size = new System.Drawing.Size(860, 220);
             this.dgvProductos.TabIndex = 1;
             // 
-            // lblId
-            // 
-            this.lblId.Location = new System.Drawing.Point(15, 20);
-            this.lblId.Name = "lblId";
-            this.lblId.Size = new System.Drawing.Size(100, 23);
-            this.lblId.TabIndex = 0;
-            this.lblId.Text = "0";
-            this.lblId.Visible = false;
-            // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(15, 48);
+            this.txtCodigo.Location = new System.Drawing.Point(73, 48);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(130, 22);
             this.txtCodigo.TabIndex = 2;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(160, 48);
+            this.txtNombre.Location = new System.Drawing.Point(245, 48);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(230, 22);
             this.txtNombre.TabIndex = 4;
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(405, 48);
+            this.txtPrecio.Location = new System.Drawing.Point(532, 48);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(100, 22);
             this.txtPrecio.TabIndex = 6;
             // 
             // txtStock
             // 
-            this.txtStock.Location = new System.Drawing.Point(520, 48);
+            this.txtStock.Location = new System.Drawing.Point(687, 48);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(80, 22);
             this.txtStock.TabIndex = 8;
-            // 
-            // cmbCategorias
-            // 
-            this.cmbCategorias.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCategorias.Location = new System.Drawing.Point(615, 48);
-            this.cmbCategorias.Name = "cmbCategorias";
-            this.cmbCategorias.Size = new System.Drawing.Size(150, 24);
-            this.cmbCategorias.TabIndex = 10;
             // 
             // btnNuevo
             // 
@@ -172,7 +149,7 @@ namespace Punto.Forms
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(15, 25);
+            this.label1.Location = new System.Drawing.Point(70, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 20);
             this.label1.TabIndex = 1;
@@ -180,7 +157,7 @@ namespace Punto.Forms
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(160, 25);
+            this.label2.Location = new System.Drawing.Point(242, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 20);
             this.label2.TabIndex = 3;
@@ -188,7 +165,7 @@ namespace Punto.Forms
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(405, 25);
+            this.label3.Location = new System.Drawing.Point(529, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 5;
@@ -196,19 +173,11 @@ namespace Punto.Forms
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(520, 25);
+            this.label4.Location = new System.Drawing.Point(684, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Stock:";
-            // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(615, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Categoría:";
             // 
             // label6
             // 
@@ -229,7 +198,6 @@ namespace Punto.Forms
             // 
             // gbDatos
             // 
-            this.gbDatos.Controls.Add(this.lblId);
             this.gbDatos.Controls.Add(this.label1);
             this.gbDatos.Controls.Add(this.txtCodigo);
             this.gbDatos.Controls.Add(this.label2);
@@ -238,8 +206,6 @@ namespace Punto.Forms
             this.gbDatos.Controls.Add(this.txtPrecio);
             this.gbDatos.Controls.Add(this.label4);
             this.gbDatos.Controls.Add(this.txtStock);
-            this.gbDatos.Controls.Add(this.label5);
-            this.gbDatos.Controls.Add(this.cmbCategorias);
             this.gbDatos.Location = new System.Drawing.Point(12, 310);
             this.gbDatos.Name = "gbDatos";
             this.gbDatos.Size = new System.Drawing.Size(860, 140);
