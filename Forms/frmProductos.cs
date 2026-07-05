@@ -6,7 +6,6 @@ namespace Punto.Forms
 {
     public partial class frmProductos : Form
     {
-        //Este es un variable para sasber sobre el id del producto para eliminarlo o modificar 
         int IdProducSelecc = 0;
         public frmProductos()
         {
@@ -155,6 +154,36 @@ namespace Punto.Forms
                 MessageBox.Show("Error al modificar el producto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 if (conn.State == System.Data.ConnectionState.Open) conn.Close();
             }
+        }
+
+        //Para eliminar un producto seleccionado
+        private void btnEliminar_Click(object sender, EventArgs e)
+        { 
+            if (dgvProductos.SelectedRows.Count == 0) return;
+
+            int idSeleccionado = Convert.ToInt32(dgvProductos.SelectedRows[0].Cells["producto_id"].Value);
+
+            DialogResult confirm = MessageBox.Show("¿Seguro que deseas eliminar este producto?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.No) return;
+
+            Conexion conClase = new Conexion();
+            MySqlConnection conn = conClase.GetConeccion();
+            if (conn == null) return;
+
+            string sql = "DELETE FROM productos WHERE producto_id = @id";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@id", idSeleccionado);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+            MessageBox.Show("Producto eliminado con éxito.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CargarProductos();
+
+            txtCodigo.Clear();
+            txtNombre.Clear();
+            txtPrecio.Clear();
+            txtStock.Clear();
         }
     }
 }
