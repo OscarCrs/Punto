@@ -75,6 +75,7 @@ namespace Punto.Forms
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(860, 220);
             this.dgvProductos.TabIndex = 1;
+            this.dgvProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellContentClick);
             // 
             // txtCodigo
             // 

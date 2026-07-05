@@ -6,6 +6,8 @@ namespace Punto.Forms
 {
     public partial class frmProductos : Form
     {
+        //Este es un variable para sasber sobre el id del producto para eliminarlo o modificar 
+        int IdProducSelecc = 0;
         public frmProductos()
         {
             InitializeComponent();
@@ -91,5 +93,21 @@ namespace Punto.Forms
                 }
             }
         }
+
+        private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        { 
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow fila = dgvProductos.Rows[e.RowIndex];
+
+                txtCodigo.Text = fila.Cells["codigo"].Value.ToString();
+                txtNombre.Text = fila.Cells["descripcion"].Value.ToString();
+                txtPrecio.Text = fila.Cells["precio"].Value.ToString();
+                txtStock.Text = fila.Cells["stock"].Value.ToString();
+
+                IdProducSelecc = Convert.ToInt32(fila.Cells["producto_id"].Value);
+            }
+        }
+    
     }
 }
