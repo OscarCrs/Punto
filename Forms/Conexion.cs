@@ -16,7 +16,7 @@ namespace Punto.Forms
         //constructor
         public Conexion()
         {
-            Cadena = "Server=127.0.0.1; Database=PuntoDB; Uid=root; Pwd=; Port=3306;";
+            Cadena = "Server=127.0.0.1; Database=CafeteriaEscolar; Uid=root; Pwd=; Port=3306;";
         }
 
         //metodo para conectar a la base de datos
